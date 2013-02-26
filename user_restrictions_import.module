@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Simple module to import user restrictions rules
+ */
+
+/**
+ * Implementation of hook_menu().
+ */
+function user_restrictions_import_menu() {
+  $items = array();
+  $items['admin/config/people/user-restrictions/import'] = array(
+    'title' => 'Import',
+    'description' => 'Import/Update User Restrictions.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('user_restrictions_import_form'),
+    'access arguments' => array('import user restrictions'),
+    'file' => 'user_restrictions_import.admin.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_permission().
+ */
+function user_restrictions_import_permission() {
+  return array(
+    'import user restrictions' => array(
+      'title' => t('Import User Restrictions'),
+      'description' => t('Import and update user restrictions.'),
+    ),
+  );
+}

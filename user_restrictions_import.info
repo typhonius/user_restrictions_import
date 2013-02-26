@@ -1,0 +1,4 @@
+name = User Restrictions Import
+description = Simple module to import user restrictions rules
+core = 7.x
+dependencies[] = user_restrictions
